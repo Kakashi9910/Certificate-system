@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 import ejs from "ejs";
 import path from "path";
 import fs from "fs";
@@ -9,8 +9,7 @@ const __dirname = path.dirname(__filename);
 
 export const generateCertificate = async (data) => {
   const browser = await puppeteer.launch({
-    executablePath: "/usr/bin/chromium-browser", // ✅ Render chromium path
-    headless: true,
+    headless: "new",
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
