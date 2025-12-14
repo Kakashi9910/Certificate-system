@@ -27,10 +27,10 @@ export const generateCertificate = async (data) => {
     data
   );
 
-  await page.setContent(html, { waitUntil: "networkidle0" });
+  await page.setContent(html);
 
-  const pdfDir = path.join(__dirname, "../certificates/pdf");
-  const jpgDir = path.join(__dirname, "../certificates/jpg");
+  const pdfDir = "/tmp/pdf"
+  const jpgDir = "/tmp/jpg";
 
   fs.mkdirSync(pdfDir, { recursive: true });
   fs.mkdirSync(jpgDir, { recursive: true });
