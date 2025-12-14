@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import ejs from "ejs";
 import path from "path";
 import fs from "fs";
@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 export const generateCertificate = async (data) => {
   const browser = await puppeteer.launch({
+    executablePath: "/usr/bin/chromium-browser", // ✅ Render chromium path
     headless: true,
     args: [
       "--no-sandbox",
@@ -27,14 +28,12 @@ export const generateCertificate = async (data) => {
 
   await page.setContent(html, { waitUntil: "networkidle0" });
 
-  // ✅ Ensure directories exist
   const pdfDir = path.join(__dirname, "../certificates/pdf");
   const jpgDir = path.join(__dirname, "../certificates/jpg");
 
   fs.mkdirSync(pdfDir, { recursive: true });
   fs.mkdirSync(jpgDir, { recursive: true });
 
-  // ✅ Safe filename
   const safeName = data.name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
 
   const pdfPath = path.join(pdfDir, `${safeName}.pdf`);

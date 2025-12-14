@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "postinstall": "npx puppeteer browsers install chrome"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +18,6 @@
     "express": "^5.2.1",
     "nodemailer": "^7.0.11",
     "nodemon": "^3.1.11",
-    "puppeteer": "^24.33.0"
+    "puppeteer-core": "^24.33.0"
   }
 }
