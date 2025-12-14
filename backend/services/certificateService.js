@@ -16,7 +16,12 @@ export const generateCertificate = async (data) => {
       "--disable-setuid-sandbox",
       "--disable-dev-shm-usage",
       "--disable-gpu"
-    ]
+    ],
+    
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(),
   });
   
 
