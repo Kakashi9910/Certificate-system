@@ -9,9 +9,8 @@ const __dirname = path.dirname(__filename);
 
 export const generateCertificate = async (data) => {
   const browser = await puppeteer.launch({
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
     
-    headless: "new",
+    headless: "true",
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
