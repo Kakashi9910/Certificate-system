@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap');
+
+    body {
+      width: 1123px;
+      height: 794px;
+      margin: 0 auto;
+      padding: 60px 80px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #f7f8fa 0%, #d7e1ec 100%);
+      border: 15px solid #1e293b;
+      box-sizing: border-box;
+      color: #1e293b;
+      position: relative;
+    }
+
+    /* Ribbon Banner */
+    .ribbon {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #d4af37;
+      color: white;
+      padding: 12px 60px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      border-radius: 8px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      user-select: none;
+    }
+
+    .content {
+      margin-top: 120px;
+      text-align: center;
+    }
+
+    .content p {
+      font-size: 20px;
+      margin: 20px 0 10px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+    }
+
+    .name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 54px;
+      font-weight: 700;
+      margin: 10px 0 30px;
+      color: #d4af37;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .details {
+      font-size: 22px;
+      line-height: 1.5;
+      font-weight: 600;
+      margin: 10px 0;
+    }
+
+    /* Footer Signature area */
+    .footer {
+      position: absolute;
+      bottom: 60px;
+      left: 80px;
+      right: 80px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 500;
+      color: #4b5563;
+    }
+
+    .signature-box {
+      border-top: 2px solid #1e293b;
+      padding-top: 6px;
+      width: 30%;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="ribbon">Certificate of Registration</div>
+
+  <div class="content">
+    <p>This certifies that</p>
+    <div class="name"><%= name %></div>
+    <p class="details"><strong>Business:</strong> <%= businessName %></p>
+    <p class="details"><strong>GST Number:</strong> <%= gstNumber %></p>
+    <p class="details"><strong>Address:</strong> <%= businessAddress %></p>
+  </div>
+
+  <div class="footer">
+    <div class="signature-box">
+      Authorized Signature
+    </div>
+    <div class="signature-box">
+      Date: <%= new Date().toLocaleDateString() %>
+    </div>
+  </div>
+
+</body>
+</html>
