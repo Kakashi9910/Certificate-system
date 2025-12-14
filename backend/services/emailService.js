@@ -1,22 +1,23 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+import fs from "fs";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendEmail = async ({ email, name, pdfPath, jpgPath }) => {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-  });
-
-  await transporter.sendMail({
-    from: `"Certificate System" <${process.env.EMAIL_USER}>`,
+  await resend.emails.send({
+    from: "Certificate System <onboarding@resend.dev>",
     to: email,
-    subject: "Your Certificate",
-    text: `Hello ${name},\n\nYour certificate is attached.`,
+    subject: "Your Certificate 🎉",
+    html: `<p>Hello <strong>${name}</strong>,<br/>Your certificate is attached.</p>`,
     attachments: [
-      { filename: "certificate.pdf", path: pdfPath },
-      { filename: "certificate.jpg", path: jpgPath }
-    ]
+      {
+        filename: "certificate.pdf",
+        content: fs.readFileSync(pdfPath),
+      },
+      {
+        filename: "certificate.jpg",
+        content: fs.readFileSync(jpgPath),
+      },
+    ],
   });
 };
