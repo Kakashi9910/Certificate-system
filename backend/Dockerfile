@@ -1,8 +1,6 @@
 FROM ghcr.io/puppeteer/puppeteer:24.33.0
 
-# Puppeteer image already includes Chromium
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 
 WORKDIR /usr/src/app
 
